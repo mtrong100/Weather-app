@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="icon" href="./asset/favicon.png" type="image/x-icon" />
+    <!-- Link fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/5f219ec053.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Link file css -->
+    <link rel="stylesheet" href="./asset/reset.css" />
+    <link rel="stylesheet" href="./asset/app.css" />
+    <title>Weather app</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="search" autocomplete="off"  placeholder="Nhập tên tỉnh hoặc thành phố" />
+      </div>
+      <div class="weather-content">
+        <div class="weather-img">
+          <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" />
+        </div>
+        <h1 class="weather-temp">30</h1>
+        <p class="weather-desc">Broken clouds</p>
+        <p class="city-name">Hà Nội</p>
+      </div>
+      <div class="weather-bottom">
+        <div class="wind-section">
+          <i class="fa-solid fa-wind"></i>
+          <div class="wind-desc">
+            <h2 class="text">Gió</h2>
+            <p class="wind-value text-small">5.54km/h</p>
+          </div>
+        </div>
+        <div class="humidity-section">
+          <i class="fa-solid fa-droplet"></i>
+          <div class="humidity-desc">
+            <h2 class="text">Độ ẩm</h2>
+            <p class="humidity-value text-small">80%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./asset/script.js"></script>
+  </body>
+</html>
