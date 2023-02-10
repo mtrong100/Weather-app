@@ -4,11 +4,14 @@
 }
 body {
   background: var(--main-color);
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   font-family: "Roboto", sans-serif;
   padding: 0 15px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 .text {
   font-weight: 500;
@@ -16,6 +19,10 @@ body {
 .text-small {
   margin-top: 5px;
   font-size: 16px;
+}
+.root {
+  width: 100%;
+  max-width: 400px;
 }
 .wrapper {
   background-color: #fff;
@@ -73,6 +80,7 @@ body {
 .weather-content .city-name {
   font-weight: 500;
   font-size: 20px;
+  text-align: center;
 }
 .weather-bottom {
   margin-top: 60px;
@@ -96,7 +104,73 @@ body {
   justify-content: center;
   gap: 20px;
 }
-@media screen and (max-width: 350px) {
+
+/* ---------------toast message------------- */
+.toast {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: red;
+  background: #fff;
+  padding: 20px 35px 20px 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-left: 8px solid red;
+  overflow: hidden;
+  transform: translateX(150%);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.25, 1.35);
+}
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: #ddd;
+}
+.progress::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+.progress.active::before {
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+.toast.active {
+  transform: translateX(0);
+}
+
+/* ------ responsive ---------- */
+@media screen and (max-width: 480px) {
+  .toast {
+    top: 50px;
+    right: 30px;
+    color: red;
+    font-size: 15px;
+    border: 2px solid rgba(255, 0, 0, 0.559);
+    padding: 15px 30px 15px 20px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .toast {
+    top: 10px;
+    right: 30px;
+    color: red;
+    font-size: 13px;
+    padding: 15px;
+  }
   .weather-bottom i {
     font-size: 20px;
   }
@@ -107,5 +181,8 @@ body {
   .text-small {
     margin-top: 5px;
     font-size: 13px;
+  }
+  .weather-content .city-name {
+    font-size: 16px;
   }
 }

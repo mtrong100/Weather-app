@@ -9,15 +9,25 @@ const wind = document.querySelector(".wind-value");
 const humidity = document.querySelector(".humidity-value");
 const weatherImg = document.querySelector(".weather-img img");
 
+const toast = document.querySelector(".toast");
+const progress = document.querySelector(".progress");
+
 /* get data from api */
 searchBox.addEventListener("change", getWeather);
 async function getWeather(e) {
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${e.target.value}&appid=${API_KEY}&lang=vi&units=metric`
-  );
-  const data = await res.json();
-  weatherData(data);
-  // console.log(data);
+  try {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${e.target.value.trim()}&appid=${API_KEY}&lang=vi&units=metric`
+    );
+    const data = await res.json();
+    weatherData(data);
+    console.log(data);
+  } catch (err) {
+    showToast();
+    cityName.innerHTML =
+      "Dell phải do thằng code ngu mà do API củ chuối, ko gọi dc data của các tình thành Việt Nam";
+    cityName.style.color = "red";
+  }
 }
 
 /* display your current place */
@@ -52,3 +62,17 @@ searchBox.addEventListener("keydown", function (e) {
     searchWrapper.style.borderColor = "#eee";
   }
 });
+
+/* show toast when catch error from sever */
+function showToast() {
+  toast.classList.add("active");
+  progress.classList.add("active");
+
+  setTimeout(() => {
+    toast.classList.remove("active");
+  }, 5000);
+
+  setTimeout(() => {
+    progress.classList.remove("active");
+  }, 5300);
+}
